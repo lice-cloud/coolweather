@@ -1,6 +1,7 @@
-package com.coolweather.android.service;
+package com.coolweather.android;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,6 +100,12 @@ public class ChooseAreaFragment extends Fragment {
                 }else if (currentLevel == LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     queryCounties();
+                }else if (currentLevel == LEVEL_COUNTY){
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -157,7 +164,8 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         }else {
             int provinceCode = selectedProvince.getProvinceCode();
-            String address = "http://guolin.tech/api/china" + provinceCode;
+            Log.i("tag","provinceCode=="+provinceCode);
+            String address = "http://guolin.tech/api/china/" + provinceCode;
             queryFromServer(address,"city");
         }
     }
@@ -189,6 +197,7 @@ public class ChooseAreaFragment extends Fragment {
      * 根据传入的地址的类型从服务器上查询省市县数据
      */
     private void queryFromServer(String address,final String type){
+        Log.i("tag","type == "+type);
         showProgressDialog();
         Log.d("tag","showP");
         HttpUtil.sendOkHttpRequest(address, new Callback() {
@@ -209,9 +218,11 @@ public class ChooseAreaFragment extends Fragment {
                 Log.d("tag","true");
                 String responseText = response.body().string();
                 boolean result = false;
+
                 if ("province".equals(type)){
                     result = Utility.handleProvinceResponse(responseText);
                 }else if ("city".equals(type)){
+                    Log.d("tag","city done");
                     result = Utility.handleCityResponse(responseText,selectedProvince.getId());
                 }else if ("county".equals(type)){
                     result = Utility.handleCountyResponse(responseText,selectedCity.getId());
