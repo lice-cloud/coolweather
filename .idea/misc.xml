@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../.gradle/caches/transforms-3/b04e496035f8c1e2f42c46472bb2ce42/transformed/jetified-appcompat-resources-1.2.0/res/drawable/abc_vector_test.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1171875" />
+        <entry key="app/src/main/res/drawable-v24/logo_foreground.xml" value="0.1171875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10104166666666667" />
         <entry key="app/src/main/res/layout/activity_weather.xml" value="0.10104166666666667" />
         <entry key="app/src/main/res/layout/aqi.xml" value="0.10104166666666667" />
@@ -13,6 +15,8 @@
         <entry key="app/src/main/res/layout/now.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/suggestion.xml" value="0.10104166666666667" />
         <entry key="app/src/main/res/layout/title.xml" value="0.18125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1171875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1171875" />
       </map>
     </option>
   </component>
